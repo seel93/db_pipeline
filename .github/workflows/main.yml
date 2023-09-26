@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install MySQL JDBC driver
+        run: |
+          sudo apt-get update && sudo apt-get install -y mysql-connector-java
       - uses: actions/checkout@v3
       - uses: liquibase-github-actions/update@v4.23.2
         with:
