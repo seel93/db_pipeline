@@ -10,12 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: liquibase/liquibase-github-action@v7
+      - uses: actions/checkout@v3
+      - uses: liquibase-github-actions/update@v4.23.2
         with:
-          operation: 'update'
-          classpath: 'db/changelog'
-          changeLogFile: 'changes/create.sql'
-          username: root
-          password: ${{ secrets.DB_PWD }}
+          # The root changelog
+          # string
+          # Required
+          changelogFile: "example-changelog.sql"
+
+          # The JDBC database connection URL
+          # string
+          # Required
           url: ${{ secrets.DB_URL }}
