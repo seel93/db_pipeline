@@ -10,15 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Run Liquibase Update
-        env:
-          DATABASE_URL: ${{ secrets.DB_URL }}
-          DATABASE_USERNAME: root
-          DATABASE_PASSWORD: ${{ secrets.DB_PWD }}
-        run: |
-          ls 
-          pwd
-          ./liquibase --url=$DATABASE_URL --username=$DATABASE_USERNAME --password=$DATABASE_PASSWORD update
+      - uses: actions/checkout@v2
+      - uses: liquibase/liquibase-github-action@v7
+        with:
+          operation: 'update'
+          classpath: 'db/changelog'
+          changeLogFile: 'changes/create.sql'
+          username: root
+          password: ${{ secrets.DB_PWD }}
+          url: ${{ secrets.DB_URL }}
