@@ -11,6 +11,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: liquibase-github-actions/status@v4.23.2
+        with:
+          changelogFile: "example-changelog.sql"
+          driver: "com.mysql.jdbc.Driver"
+          url: ${{ secrets.DB_URL }}
       - uses: liquibase-github-actions/update@v4.23.2
         with:
           changelogFile: "example-changelog.sql"
