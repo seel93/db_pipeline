@@ -16,8 +16,11 @@ jobs:
           changelogFile: "example-changelog.sql"
           driver: "com.mysql.jdbc.Driver"
           url: ${{ secrets.DB_URL }}
+          driverPropertiesFile: "./lib/mysql-connector-j-8.1.0.jar"
       - uses: liquibase-github-actions/update@v4.23.2
         with:
           changelogFile: "example-changelog.sql"
           driver: "com.mysql.jdbc.Driver"
           url: ${{ secrets.DB_URL }}
+          driverPropertiesFile: "./lib/mysql-connector-j-8.1.0.jar"
+          
