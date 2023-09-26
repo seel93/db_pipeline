@@ -24,4 +24,4 @@ jobs:
           driver: "com.mysql.jdbc.Driver"
           url: ${{ secrets.DB_URL }}
           driverPropertiesFile: "./lib/mysql-connector-j-8.1.0.jar"
-          verbose: "True"
+          logLevel: "flag"
