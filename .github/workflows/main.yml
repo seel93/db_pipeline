@@ -19,4 +19,6 @@ jobs:
           DATABASE_USERNAME: root
           DATABASE_PASSWORD: ${{ secrets.DB_PWD }}
         run: |
+          ls 
+          pwd
           ./liquibase --url=$DATABASE_URL --username=$DATABASE_USERNAME --password=$DATABASE_PASSWORD update
